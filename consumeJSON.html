@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV321 Advanced Javascript - JSON</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<!--
+    Instructions:
+    	1. Incorporate the createJSON.js file into this page as an external javascript file.
+        2. Access the JSON object in local storage and convert it into a Javascript object.
+        3. Use the information in the object to complete the student card.   
+-->
+<script src="JSON Construct Objects/createJSON.js"></script>
+<script>
+
+	let student1 = localStorage.getItem("studentOne");
+	let studentOneObj = JSON.parse(student1);
+
+	let student2 = localStorage.getItem("studentTwo");
+	let studentTwoObj = JSON.parse(student2);
+
+	let student3 = localStorage.getItem("studentThree");
+	let studentThreeObj = JSON.parse(student3);
+
+	function pageSetup(){
+		document.querySelector("#student1ID").innerHTML = studentOneObj.student_id;
+		document.querySelector("#student1GPA").innerHTML = studentOneObj.student_gpa;
+
+		document.querySelector("#student2ID").innerHTML = studentTwoObj.student_id;
+		document.querySelector("#student2GPA").innerHTML = studentTwoObj.student_gpa;
+
+		document.querySelector("#student3ID").innerHTML = studentThreeObj.student_id;
+		document.querySelector("#student3GPA").innerHTML = studentThreeObj.student_gpa;
+
+
+	}
+
+
+</script>
+<style>
+	.studentCard	{
+		width:200px;
+		box-sizing:border-box;
+		background-color:lightblue;
+		padding-left:5px;
+		padding-top:3px;
+		border:thin solid blue;
+		box-shadow: 2px 2px 2px grey;		
+	}
+	
+	.studentCard h3	{
+		margin:0px;	
+	}
+</style>
+
+</head>
+
+<body onload="pageSetup()">
+	<h1>WDV321 Advanced Javascript</h1>
+    <h2>Unit-8 JSON Objects</h2>
+    <h3>Creating and consuming a JSON object</h3>
+
+<div class="studentCard">
+	<h3>Student ID: <span id="student1ID"></span></h3>
+    <p>Student GPA: <span id="student1GPA"></span></p>
+	<p>Student Courses:
+    	<ul>
+			<!-- display the courses as list items -->
+			<script>
+				for(x = 0; x < studentOneObj.student_courses.length ; x++){
+					document.write("<li>" + studentOneObj.student_courses[x] + "</li>");
+				}
+			</script>
+    	</ul>
+    </p>  
+
+</div>    
+<br>
+<div class="studentCard">
+	<h3>Student ID: <span id="student2ID"></span></h3>
+    <p>Student GPA: <span id="student2GPA"></span></p>
+	<p>Student Courses:
+    	<ul>
+			<!-- display the courses as list items -->
+			<script>
+				for(x = 0; x < studentTwoObj.student_courses.length ; x++){
+					document.write("<li>" + studentTwoObj.student_courses[x] + "</li>");
+				}
+			</script>
+    	</ul>
+    </p>  
+
+</div> 
+<br>
+<div class="studentCard">
+	<h3>Student ID: <span id="student3ID"></span></h3>
+    <p>Student GPA: <span id="student3GPA"></span></p>
+	<p>Student Courses:
+    	<ul>
+			<!-- display the courses as list items -->
+			<script>
+				for(x = 0; x < studentThreeObj.student_courses.length ; x++){
+					document.write("<li>" + studentThreeObj.student_courses[x] + "</li>");
+				}
+			</script>
+    	</ul>
+    </p>  
+
+</div> 
+
+
+</body>
+</html>
